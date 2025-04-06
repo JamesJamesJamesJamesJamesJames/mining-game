@@ -1,13 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqgiftq6g2ds8"]
-
-[ext_resource type="Script" uid="uid://ln88wf0483sj" path="res://scenes/player.gd" id="1_3vyb7"]
+[gd_scene load_steps=2 format=3 uid="uid://cqgiftq6g2ds8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(27, 41)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_3vyb7")
-GRAVITY = 1000
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 27.0
