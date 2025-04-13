@@ -1,7 +1,5 @@
 extends StaticBody2D
 
-signal clicked
-
 var max_break: float = 10
 # Breaks block when this hits 0
 var break_progress: float = 0
