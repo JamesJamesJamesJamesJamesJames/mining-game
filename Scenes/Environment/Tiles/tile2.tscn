@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq651ke5topt1"]
+
+[ext_resource type="PackedScene" uid="uid://eujvyshdg1me" path="res://Scenes/Environment/Tiles/breakable.tscn" id="1_v1pee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0isfs"]
+size = Vector2(16, 16)
+
+[node name="TestTile" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 0.266667, 0.741176, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0isfs")
+
+[node name="Breakable" parent="." node_paths=PackedStringArray("breakable") instance=ExtResource("1_v1pee")]
+breakable = NodePath("..")

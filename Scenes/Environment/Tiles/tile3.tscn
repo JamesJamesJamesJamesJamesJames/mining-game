@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq651ke5topt1"]
+[gd_scene load_steps=3 format=3 uid="uid://qvb0t1rndk6h"]
 
-[ext_resource type="Script" uid="uid://bj5foorcc3p77" path="res://Scenes/Environment/Tiles/test_tile.gd" id="1_0isfs"]
+[ext_resource type="PackedScene" uid="uid://eujvyshdg1me" path="res://Scenes/Environment/Tiles/breakable.tscn" id="1_hgq1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0isfs"]
 size = Vector2(16, 16)
 
 [node name="TestTile" type="StaticBody2D"]
 collision_mask = 0
-script = ExtResource("1_0isfs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
-color = Color(1, 0.266667, 0.741176, 1)
+color = Color(0.162582, 0.67167, 0.853295, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0isfs")
+
+[node name="Breakable" parent="." node_paths=PackedStringArray("breakable") instance=ExtResource("1_hgq1r")]
+breakable = NodePath("..")

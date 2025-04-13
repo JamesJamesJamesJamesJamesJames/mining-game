@@ -1,3 +1,3 @@
 extends Node
 
-var curr_moused_tile: StaticBody2D
+var rand_seed = Time.get_unix_time_from_system()
