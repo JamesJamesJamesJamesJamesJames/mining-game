@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var player: CharacterBody2D
 @export_category("Constants")
@@ -12,6 +12,12 @@ extends Node2D
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta: float) -> void:
+	if !enable:
+		if !player.is_on_floor():
+			player.velocity.y += GRAVITY * delta * GRAVITY_MOD
+		player.move_and_slide()
+		return
+	
 	if Input.is_action_pressed("move_left"):
 		player.velocity.x = -SPEED
 	elif Input.is_action_pressed("move_right"):
@@ -24,5 +30,4 @@ func _physics_process(delta: float) -> void:
 		player.velocity.y = -JUMP_VEL
 	else:
 		player.velocity.y = 0
-	if enable:
-		player.move_and_slide()
+	player.move_and_slide()
