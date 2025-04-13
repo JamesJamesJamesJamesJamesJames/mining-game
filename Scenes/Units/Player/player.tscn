@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqgiftq6g2ds8"]
+[gd_scene load_steps=4 format=3 uid="uid://cqgiftq6g2ds8"]
+
+[ext_resource type="Script" uid="uid://ln88wf0483sj" path="res://Scenes/Units/Player/player.gd" id="1_ek1gq"]
+[ext_resource type="PackedScene" uid="uid://q1y4j65w1wsi" path="res://Scenes/Units/Player/PlayerMovement.tscn" id="2_rgljp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(27, 41)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ek1gq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 27.0
@@ -13,3 +17,8 @@ color = Color(0.819608, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(13.5, 20.5)
 shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="PlayerMovement" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_rgljp")]
+player = NodePath("..")
+SPEED = 300
+JUMP_VEL = 700
