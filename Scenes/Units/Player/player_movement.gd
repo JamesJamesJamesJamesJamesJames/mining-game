@@ -4,6 +4,7 @@ extends Node
 @export_category("Constants")
 @export var SPEED := 200
 @export var JUMP_VEL := 400
+@export var FRICTION := 1200
 @export var GRAVITY_MOD := 1
 
 @export_category("Settings")
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("move_right"):
 		player.velocity.x = SPEED
 	elif player.is_on_floor():
-		player.velocity.x = move_toward(player.velocity.x, 0, 800 * delta)
+		player.velocity.x = move_toward(player.velocity.x, 0, FRICTION * delta)
 	if !player.is_on_floor():
 		player.velocity.y += GRAVITY * delta * GRAVITY_MOD
 	elif Input.is_action_just_pressed("jump") and player.is_on_floor():
