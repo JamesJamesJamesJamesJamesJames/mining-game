@@ -34,5 +34,5 @@ player = NodePath("..")
 SPEED = 300
 JUMP_VEL = 600
 
-[node name="MiningCast" type="RayCast2D" parent="."]
+[node name="MineCast" type="RayCast2D" parent="."]
 enabled = false

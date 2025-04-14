@@ -12,6 +12,5 @@ func _physics_process(delta: float) -> void:
 	# Test code to visualize breaking
 	var shade = remap(break_progress, 0, max_break, 1, 0)
 	breakable.modulate = Color(shade, shade, shade)
-	print(shade)
 	
 	#break_progress += .1
