@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj16t0v4jcqd6"]
+[gd_scene load_steps=7 format=3 uid="uid://bj16t0v4jcqd6"]
 
 [ext_resource type="PackedScene" uid="uid://cqgiftq6g2ds8" path="res://Scenes/Units/Player/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_qxrlw"]
@@ -12,9 +12,6 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
-size = Vector2(1212, 39)
-
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
@@ -23,6 +20,7 @@ position = Vector2(186, -78)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(186, -128)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -42,18 +40,5 @@ follow_offset = Vector2(0, -50)
 dead_zone_width = 0.226
 dead_zone_height = 0.192
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(372, 407)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -587.0
-offset_right = 625.0
-offset_bottom = 40.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(19, 19.5)
-shape = SubResource("RectangleShape2D_3dryh")
 
 [node name="WorldGenerator" parent="." instance=ExtResource("5_wowpa")]

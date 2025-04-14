@@ -5,14 +5,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0isfs"]
 size = Vector2(16, 16)
 
-[node name="TestTile" type="StaticBody2D"]
+[node name="Tile2" type="StaticBody2D"]
 collision_mask = 0
+input_pickable = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
+mouse_filter = 2
 color = Color(1, 0.266667, 0.741176, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

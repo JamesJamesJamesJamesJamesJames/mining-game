@@ -65,3 +65,4 @@ mine={
 [physics]
 
 2d/default_gravity=3000.0
+common/physics_interpolation=true
