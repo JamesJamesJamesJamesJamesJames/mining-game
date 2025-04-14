@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://eujvyshdg1me"]
+
+[ext_resource type="Script" uid="uid://ecjgnbx7ljc7" path="res://Scenes/Environment/Tiles/breakable.gd" id="1_w6rbm"]
+
+[node name="Breakable" type="Node"]
+script = ExtResource("1_w6rbm")

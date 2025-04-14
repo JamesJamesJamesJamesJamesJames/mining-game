@@ -1,26 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj16t0v4jcqd6"]
+[gd_scene load_steps=7 format=3 uid="uid://bj16t0v4jcqd6"]
 
 [ext_resource type="PackedScene" uid="uid://cqgiftq6g2ds8" path="res://Scenes/Units/Player/player.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://ln88wf0483sj" path="res://Scenes/Units/Player/player.gd" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_3dryh"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://clrphlcxv6eq7" path="res://Scenes/Environment/world_generator.tscn" id="5_wowpa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
-size = Vector2(387, 40)
+[sub_resource type="Resource" id="Resource_i6g32"]
+script = ExtResource("4_wowpa")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(128, 258)
+position = Vector2(186, -78)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(186, -128)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("2_qxrlw")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(5, 268)
+[node name="PlayerCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(186, -128)
+script = ExtResource("3_3dryh")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_i6g32")
+follow_offset = Vector2(0, -50)
+dead_zone_width = 0.226
+dead_zone_height = 0.192
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -3.0
-offset_top = 77.0
-offset_right = 384.0
-offset_bottom = 117.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(190.5, 97)
-shape = SubResource("RectangleShape2D_yqjtg")
+[node name="WorldGenerator" parent="." instance=ExtResource("5_wowpa")]

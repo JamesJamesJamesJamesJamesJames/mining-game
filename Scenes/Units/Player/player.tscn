@@ -1,15 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqgiftq6g2ds8"]
+[gd_scene load_steps=4 format=3 uid="uid://cqgiftq6g2ds8"]
+
+[ext_resource type="Script" uid="uid://ln88wf0483sj" path="res://Scenes/Units/Player/player.gd" id="1_ek1gq"]
+[ext_resource type="Script" uid="uid://clyjwb21aij2j" path="res://Scenes/Units/Player/player_movement.gd" id="2_rgljp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(27, 41)
+size = Vector2(25, 40)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_ek1gq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 27.0
-offset_bottom = 41.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -20.0
+offset_right = 12.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.819608, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13.5, 20.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_rgljp")
+player = NodePath("..")
+SPEED = 300
+JUMP_VEL = 600
+
+[node name="MineCast" type="RayCast2D" parent="."]
+enabled = false
