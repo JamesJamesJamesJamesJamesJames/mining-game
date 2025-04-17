@@ -4,5 +4,3 @@
 
 [node name="WorldGenerator" type="Node2D"]
 script = ExtResource("1_rtinr")
-x_inc = null
-y_inc = null
